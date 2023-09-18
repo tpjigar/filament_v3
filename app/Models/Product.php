@@ -14,6 +14,7 @@ class Product extends Model
 
     protected $fillable = [
         'name', 'slug', 'sku', 'description', 'image', 'quantity', 'price', 'is_visible', 'is_featured', 'published_at',
+        'brand_id', 'type'
     ];
 
     public function brand(): BelongsTo
