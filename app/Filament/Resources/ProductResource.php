@@ -24,6 +24,8 @@ class ProductResource extends Resource
 
 //    protected static ?string $navigationLabel = 'Hello';
 
+protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -66,7 +68,7 @@ class ProductResource extends Resource
 
                         Forms\Components\TextInput::make('quantity')
 //                            ->rule(['required', 'integer','min:0']),
-                            ->numeric()->minValue(0)->maxValue(100)->required(),
+                            ->numeric()->minValue(0)->maxValue(100000)->required(),
 
                         Forms\Components\Select::make('type')
                             ->options([
