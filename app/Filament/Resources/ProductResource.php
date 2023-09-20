@@ -22,7 +22,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
 
-//    protected static ?string $navigationLabel = 'Hello';
+//    protected static ?string $navigationLabel = 'Hello'; // Change name of the navigation menu
 
 protected static ?int $navigationSort = 1;
 
