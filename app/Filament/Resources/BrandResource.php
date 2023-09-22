@@ -25,6 +25,8 @@ class BrandResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name'; // only one column can searchable globally
 
+    protected static ?string $activeNavigationIcon = 'heroicon-o-check-badge'; // icon change active navigation menu
+
     public static function form(Form $form): Form
     {
         return $form
