@@ -20,7 +20,10 @@ class CategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     protected static ?int $navigationSort=4;
+
     protected static ?string $navigationGroup='Shop';
+
+    protected static ?string $recordTitleAttribute = 'name'; // only one column can searchable globally
 
     public static function form(Form $form): Form
     {

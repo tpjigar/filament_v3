@@ -23,6 +23,8 @@ class BrandResource extends Resource
 
     protected static ?int $navigationSort = 0;
 
+    protected static ?string $recordTitleAttribute = 'name'; // only one column can searchable globally
+
     public static function form(Form $form): Form
     {
         return $form

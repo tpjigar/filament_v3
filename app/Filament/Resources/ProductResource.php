@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
@@ -24,7 +25,30 @@ class ProductResource extends Resource
 
 //    protected static ?string $navigationLabel = 'Hello'; // Change name of the navigation menu
 
-protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 1;
+
+    protected static int $globalSearchResultsLimit = 20; // global search result limit
+
+//    protected static ?string $recordTitleAttribute = 'name'; // only one column can searchable globally
+
+    // Multiple column searchable
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'slug'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Brand' => $record->brand->name, // Lazy loading global search when load relationship
+        ];
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        // Eager loading for getGlobalSearchResultDetails
+        return parent::getGlobalSearchEloquentQuery()->with(['brand']);
+    }
 
     public static function form(Form $form): Form
     {
