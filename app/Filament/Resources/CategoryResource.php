@@ -25,6 +25,8 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name'; // only one column can searchable globally
 
+//    protected static bool $shouldRegisterNavigation = false; // remove navigation memu
+
     public static function form(Form $form): Form
     {
         return $form
