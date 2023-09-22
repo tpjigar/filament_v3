@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
@@ -43,6 +44,14 @@ class AdminPanelProvider extends PanelProvider
 //                    ->visible(fn(): bool => auth()->user()->can('view')) // visible menu based on condition, permission
 //                    ->hidden(fn(): bool => auth()->user()->can('view')) // hidden menu based on condition, permission
             ])
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label('Settings')
+                    ->url('')
+                    ->icon('heroicon-o-cog-6-tooth'),
+//                'logout' => MenuItem::make()->label('Log Out'),
+            ])
+//            ->breadcrumbs(false)
             ->font('Poppins')
             ->favicon('images/favicon.png')
             ->darkMode(true)
