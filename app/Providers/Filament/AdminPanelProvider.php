@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -31,6 +32,17 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->sidebarCollapsibleOnDesktop()
+//            ->sidebarFullyCollapsibleOnDesktop() // sidebar fully closed but for that you remove sidebarCollapsibleOnDesktop
+            ->navigationItems([
+                NavigationItem::make('Blog')
+                    ->url('https://jbcodeapp.com', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-pencil-square')
+                    ->group('External')
+                    ->sort(2)
+//                    ->visible(fn(): bool => auth()->user()->can('view')) // visible menu based on condition, permission
+//                    ->hidden(fn(): bool => auth()->user()->can('view')) // hidden menu based on condition, permission
+            ])
             ->font('Poppins')
             ->favicon('images/favicon.png')
             ->darkMode(true)
